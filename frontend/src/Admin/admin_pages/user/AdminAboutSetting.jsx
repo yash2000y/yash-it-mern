@@ -9,7 +9,8 @@ const AdminAboutSetting = () => {
     // GET DATA
     const getAbout = async () => {
         try {
-          const res = await axios.get("http://localhost:5000/showaboutsettings");
+        //   const res = await axios.get("http://localhost:5000/showaboutsettings");
+          const res = await axios.get("https://yash-it-mern.onrender.com/showaboutsettings");
             setAbouts(res.data.data);
         } catch (error) {
             console.log(error);
@@ -27,7 +28,7 @@ const AdminAboutSetting = () => {
         if (!confirmDelete) return;
 
         try {
-            const res = await axios.delete(`http://localhost:5000/deleteaboutsetting/${id}`);
+            const res = await axios.delete(`https://yash-it-mern.onrender.com/deleteaboutsetting/${id}`);
             if (res.data.status) {
                 alert("Deleted Successfully");
                 getAbout();
@@ -84,7 +85,7 @@ const AdminAboutSetting = () => {
 
                                             <td>
                                                 <img
-                                                    src={`http://localhost:5000/uploads/${item.image}`}
+                                                    src={`https://yash-it-mern.onrender.com/uploads/${item.image}`}
                                                     width="50"
                                                     alt=""
                                                 />

@@ -20,7 +20,8 @@ const UpdateHomeSetting = () => {
 
     // ✅ GET OLD DATA
     useEffect(() => {
-        axios.get(`http://localhost:5000/edithomesettings/${id}`)
+        // axios.get(`http://localhost:5000/edithomesettings/${id}`)
+        axios.get(`https://yash-it-mern.onrender.com/edithomesettings/${id}`)
             .then((res) => {
                 const data = res.data.data;
 
@@ -29,8 +30,8 @@ const UpdateHomeSetting = () => {
                 setAddress(data.address);
 
                 // OLD IMAGE SHOW
-                setLogoPreview(`http://localhost:5000/uploads/${data.websiteLogo}`);
-                setBannerPreview(`http://localhost:5000/uploads/${data.homeBarImage}`);
+                setLogoPreview(`https://yash-it-mern.onrender.com/uploads/${data.websiteLogo}`);
+                setBannerPreview(`https://yash-it-mern.onrender.com/uploads/${data.homeBarImage}`);
             })
             .catch((err) => {
                 console.log(err);
@@ -70,10 +71,8 @@ const UpdateHomeSetting = () => {
         if (banner) formData.append("homeBarImage", banner);
 
         try {
-            const res = await axios.put(
-                `http://localhost:5000/updatehomesettings/${id}`,
-                formData
-            );
+            // const res = await axios.put(`http://localhost:5000/updatehomesettings/${id}`, formData);
+            const res = await axios.put(`https://yash-it-mern.onrender.com/updatehomesettings/${id}`, formData);
 
             if (res.data.status) {
                 alert("Updated Successfully ✅");

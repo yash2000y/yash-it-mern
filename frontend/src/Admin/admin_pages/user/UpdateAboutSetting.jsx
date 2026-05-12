@@ -29,7 +29,8 @@ const UpdateAboutSetting = () => {
 
     const getSingleData = async () => {
         try {
-            const res = await axios.get(`http://localhost:5000/editaboutsetting/${id}`);
+            // const res = await axios.get(`http://localhost:5000/editaboutsetting/${id}`);
+            const res = await axios.get(`https://yash-it-mern.onrender.com/editaboutsetting/${id}`);
 
             const data = res.data.data;
 
@@ -42,7 +43,8 @@ const UpdateAboutSetting = () => {
             setCity(data.city);
             setFreelance(data.freelance);
 
-            setPreview(`http://localhost:5000/uploads/${data.image}`);
+            // setPreview(`http://localhost:5000/uploads/${data.image}`);
+            setPreview(`https://yash-it-mern.onrender.com/uploads/${data.image}`);
 
         } catch (error) {
             console.log(error);
@@ -76,10 +78,8 @@ const UpdateAboutSetting = () => {
         }
 
         try {
-            const res = await axios.put(
-                `http://localhost:5000/updateaboutsetting/${id}`,
-                formData
-            );
+            // const res = await axios.put(`http://localhost:5000/updateaboutsetting/${id}`, formData );
+            const res = await axios.put(`https://yash-it-mern.onrender.com/updateaboutsetting/${id}`, formData );
 
             if (res.data.status) {
                 alert("Updated Successfully ✅");

@@ -15,7 +15,10 @@ const bcrypt = require("bcryptjs");
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+  origin: "https://your-frontend.vercel.app"
+}));
 
 // ---------------- IMAGE UPLOAD CONFIG ----------------
 
@@ -36,7 +39,8 @@ app.use("/uploads", express.static("uploads"));
 
 // ---------------- MongoDB Connection ----------------
 
-mongoose.connect("mongodb://127.0.0.1:27017/yashit")
+// mongoose.connect("mongodb://127.0.0.1:27017/yashit")
+mongoose.connect(process.env.MONGO_URL)
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
 

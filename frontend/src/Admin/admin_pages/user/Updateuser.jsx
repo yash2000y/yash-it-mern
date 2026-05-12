@@ -23,7 +23,8 @@ function Updateuser() {
   // GET SINGLE USER
   const getUser = async () => {
 
-    const res = await axios.get("http://localhost:5000/showuser");
+    // const res = await axios.get("http://localhost:5000/showuser");
+    const res = await axios.get("https://yash-it-mern.onrender.com/showuser");
 
     const singleUser = res.data.data.find((u) => u._id === id);
 
@@ -72,7 +73,7 @@ function Updateuser() {
     try {
 
       const res = await axios.put(
-        `http://localhost:5000/updateuser/${id}`,
+        `https://yash-it-mern.onrender.com/updateuser/${id}`,
         formData,
         {
           headers: {
@@ -145,7 +146,7 @@ function Updateuser() {
             {/* OLD IMAGE */}
             {user.image && (
               <img
-                src={`http://localhost:5000/uploads/${user.image}`}
+                src={`https://yash-it-mern.onrender.com/uploads/${user.image}`}
                 width="80"
                 className="mb-3"
               />
