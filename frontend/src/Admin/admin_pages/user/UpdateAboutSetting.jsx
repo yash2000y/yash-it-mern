@@ -4,6 +4,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 
 import img from "../../admin_assets/img/logo-small.png";
 import img1 from "../../admin_assets/img/profiles/avatar-01.jpg";
+const BASE_URL = "https://yash-it-mern-production.up.railway.app";
 
 const UpdateAboutSetting = () => {
 
@@ -29,7 +30,8 @@ const UpdateAboutSetting = () => {
 
     const getSingleData = async () => {
         try {
-            const res = await axios.get(`http://localhost:5000/editaboutsetting/${id}`);
+            // const res = await axios.get(`http://localhost:5000/editaboutsetting/${id}`);
+            const res = await axios.get(`${BASE_URL}/editaboutsetting/${id}`);
 
             const data = res.data.data;
 
@@ -42,7 +44,8 @@ const UpdateAboutSetting = () => {
             setCity(data.city);
             setFreelance(data.freelance);
 
-            setPreview(`http://localhost:5000/uploads/${data.image}`);
+            // setPreview(`http://localhost:5000/uploads/${data.image}`);
+            setPreview(`${BASE_URL}/uploads/${data.image}`);
 
         } catch (error) {
             console.log(error);
@@ -76,8 +79,12 @@ const UpdateAboutSetting = () => {
         }
 
         try {
-            const res = await axios.put(
-                `http://localhost:5000/updateaboutsetting/${id}`,
+            // const res = await axios.put(
+            //     `http://localhost:5000/updateaboutsetting/${id}`,
+            //     formData
+            // );
+             const res = await axios.put(
+                `${BASE_URL}/updateaboutsetting/${id}`,
                 formData
             );
 

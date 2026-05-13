@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+const BASE_URL = "https://yash-it-mern-production.up.railway.app";
 
 const initialState = {
   name: "",
@@ -27,10 +28,8 @@ const Contact = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(
-        "http://localhost:5000/addenquery",
-        formData
-      );
+      // const res = await axios.post("http://localhost:5000/addenquery", formData );
+      const res = await axios.post(`${BASE_URL}/addenquery`, formData );
 
       if (res.data?.status) {
         alert("Message Sent Successfully ✅");

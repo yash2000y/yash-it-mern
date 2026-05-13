@@ -4,6 +4,7 @@ import axios from "axios";
 
 import logosmall from "../../admin_assets/img/logo-small.png";
 import avatar01jpg from "../../admin_assets/img/profiles/avatar-01.jpg";
+const BASE_URL = "https://yash-it-mern-production.up.railway.app";
 
 const AdminHomeSetting = () => {
 
@@ -14,7 +15,8 @@ const AdminHomeSetting = () => {
 
         try {
 
-            const res = await axios.get("http://localhost:5000/showhomesetting");
+            // const res = await axios.get("http://localhost:5000/showhomesetting");
+            const res = await axios.get(`${BASE_URL}/showhomesetting`);
 
             setSettings(res.data.data);
 
@@ -39,7 +41,8 @@ const AdminHomeSetting = () => {
 
         try {
 
-            const res = await axios.delete(`http://localhost:5000/deletehomesetting/${id}`);
+            // const res = await axios.delete(`http://localhost:5000/deletehomesetting/${id}`);
+            const res = await axios.delete(`${BASE_URL}/deletehomesetting/${id}`);
 
             if (res.data.status) {
 
@@ -256,14 +259,15 @@ const AdminHomeSetting = () => {
 
                                                     <td>
                                                         <img
-                                                            src={`http://localhost:5000/uploads/${setting.websiteLogo}`}
+                                                            // src={`http://localhost:5000/uploads/${setting.websiteLogo}`}
+                                                            src={`${BASE_URL}/uploads/${setting.websiteLogo}`}
                                                             width="50"
                                                             alt="logo"
                                                         />
                                                     </td>
 
                                                     <td>
-                                                        <img src={`http://localhost:5000/uploads/${setting.homeBarImage}`}
+                                                        <img src={`${BASE_URL}/uploads/${setting.homeBarImage}`}
                                                             width="80"
                                                             alt="banner"                                              
                                                         />

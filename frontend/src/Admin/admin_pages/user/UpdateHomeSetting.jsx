@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import AdminHeader from "../../admin_components/Adminheader";
 import AdminSidebar from "../../admin_components/AdminSidebar";
+const BASE_URL = "https://yash-it-mern-production.up.railway.app";
 
 const UpdateHomeSetting = () => {
 
@@ -20,7 +21,8 @@ const UpdateHomeSetting = () => {
 
     // ✅ GET OLD DATA
     useEffect(() => {
-        axios.get(`http://localhost:5000/edithomesettings/${id}`)
+        // axios.get(`http://localhost:5000/edithomesettings/${id}`)
+        axios.get(`${BASE_URL}/edithomesettings/${id}`)
             .then((res) => {
                 const data = res.data.data;
 
@@ -29,8 +31,9 @@ const UpdateHomeSetting = () => {
                 setAddress(data.address);
 
                 // OLD IMAGE SHOW
-                setLogoPreview(`http://localhost:5000/uploads/${data.websiteLogo}`);
-                setBannerPreview(`http://localhost:5000/uploads/${data.homeBarImage}`);
+                // setLogoPreview(`http://localhost:5000/uploads/${data.websiteLogo}`);
+                setLogoPreview(`${BASE_URL}/uploads/${data.websiteLogo}`);
+                setBannerPreview(`${BASE_URL}/uploads/${data.homeBarImage}`);
             })
             .catch((err) => {
                 console.log(err);
@@ -70,8 +73,12 @@ const UpdateHomeSetting = () => {
         if (banner) formData.append("homeBarImage", banner);
 
         try {
-            const res = await axios.put(
-                `http://localhost:5000/updatehomesettings/${id}`,
+            // const res = await axios.put(
+            //     `http://localhost:5000/updatehomesettings/${id}`,
+            //     formData
+            // );
+             const res = await axios.put(
+                `${BASE_URL}/updatehomesettings/${id}`,
                 formData
             );
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+const BASE_URL = "https://yash-it-mern-production.up.railway.app";
 
 const Home = () => {
 
@@ -13,7 +14,8 @@ const Home = () => {
 
     const getSetting = async () => {
         try {
-            const res = await axios.get("http://localhost:5000/showhomesetting");
+            // const res = await axios.get("http://localhost:5000/showhomesetting");
+            const res = await axios.get(`${BASE_URL}/showhomesetting`);
 
 
             setSetting(res.data.data[0]);
@@ -32,7 +34,8 @@ const Home = () => {
                     <div className="hero-placeholder" />
                 ) : (
                     <img
-                        src={`http://localhost:5000/uploads/${setting.homeBarImage}`}
+                        // src={`http://localhost:5000/uploads/${setting.homeBarImage}`}
+                        src={`${BASE_URL}/uploads/${setting.homeBarImage}`}
                         className="hero-image"
                         alt="banner"
                         onLoad={() => setLoaded(true)}

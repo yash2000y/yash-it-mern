@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import AdminHeader from "../../admin_components/Adminheader";
 import AdminSidebar from "../../admin_components/AdminSidebar";
+const BASE_URL = "https://yash-it-mern-production.up.railway.app";
 
 function AddUser() {
 
@@ -50,8 +51,10 @@ function AddUser() {
 
         try {
 
+            // const res = await axios.post(  "http://localhost:5000/adduser",formData );
+        
             const res = await axios.post(
-                "http://localhost:5000/adduser",
+                `${BASE_URL}/addhomesetting`,
                 formData
             );
 

@@ -14,7 +14,7 @@ const Frontfooter = () => {
                             <ul className="footer-social list-unstyled mb-0">
                                 <li className="icon1">
                                     <a
-                                        href="https://www.facebook.com/thekkgroups.in"
+                                        href="#"
                                         className="btn-floating btn-sm text-black"
                                     >
                                         <i className="bi bi-twitter-x" />
@@ -23,7 +23,7 @@ const Frontfooter = () => {
 
                                 <li className="icon1">
                                     <a
-                                        href="https://www.instagram.com/thekkgroups.in/"
+                                        href="https://www.instagram.com/the_christmasboy?igsh=MTJ0ZnE0dHFvZjRkaA=="
                                         className="btn-floating btn-sm text-black"
                                     >
                                         <i className="bi bi-facebook" />

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import img from "../admin_assets/img/logo-small.png"
 import img1 from "../admin_assets/img/profiles/avatar-01.jpg"
+const BASE_URL = "https://yash-it-mern-production.up.railway.app";
 
 const Adminheader = () => {
   const navigate = useNavigate();
@@ -14,7 +15,8 @@ const Adminheader = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:5000/logout");
+      // await axios.post("http://localhost:5000/logout");
+      await axios.post(`${BASE_URL}/logout`);
 
       localStorage.removeItem("token"); //  main logout
 

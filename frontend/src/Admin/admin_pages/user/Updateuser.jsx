@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import AdminHeader from "../../admin_components/Adminheader";
 import AdminSidebar from "../../admin_components/AdminSidebar";
+const BASE_URL = "https://yash-it-mern-production.up.railway.app";
 
 function Updateuser() {
 
@@ -23,7 +24,8 @@ function Updateuser() {
   // GET SINGLE USER
   const getUser = async () => {
 
-    const res = await axios.get("http://localhost:5000/showuser");
+    // const res = await axios.get("http://localhost:5000/showuser");
+    const res = await axios.get(`${BASE_URL}/showuser`);
 
     const singleUser = res.data.data.find((u) => u._id === id);
 
@@ -72,8 +74,9 @@ function Updateuser() {
     try {
 
       const res = await axios.put(
-        `http://localhost:5000/updateuser/${id}`,
+        `${BASE_URL}/updateuser/${id}`,
         formData,
+        
         {
           headers: {
             "Content-Type": "multipart/form-data"
@@ -145,7 +148,8 @@ function Updateuser() {
             {/* OLD IMAGE */}
             {user.image && (
               <img
-                src={`http://localhost:5000/uploads/${user.image}`}
+                // src={`http://localhost:5000/uploads/${user.image}`}
+                src={`${BASE_URL}/uploads/${user.image}`}
                 width="80"
                 className="mb-3"
               />

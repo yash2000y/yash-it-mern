@@ -4,6 +4,7 @@ import axios from "axios";
 
 import logosmall from "../../admin_assets/img/logo-small.png";
 import avatar01jpg from "../../admin_assets/img/profiles/avatar-01.jpg";
+const BASE_URL = "https://yash-it-mern-production.up.railway.app";
 
 const Adminenquery = () => {
 
@@ -13,7 +14,8 @@ const Adminenquery = () => {
     const getUsers = async () => {
         try {
 
-            const res = await axios.get("http://localhost:5000/showenquiry");
+            // const res = await axios.get("http://localhost:5000/showenquiry");
+            const res = await axios.get(`${BASE_URL}/showenquiry`);
 
             if (res.data.status) {
                 setUsers(res.data.data);
@@ -33,7 +35,8 @@ const Adminenquery = () => {
 
         try {
 
-            await axios.delete(`http://localhost:5000/deleteenquiry/${id}`);
+            // await axios.delete(`http://localhost:5000/deleteenquiry/${id}`);
+            await axios.delete(`${BASE_URL}/deleteenquiry/${id}`);
 
             alert("User Deleted");
 
