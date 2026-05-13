@@ -13,8 +13,7 @@ const Adminuser = () => {
   const getUsers = async () => {
     try {
 
-      // const res = await axios.get("http://localhost:5000/showuser");
-      const res = await axios.get("https://yash-it-mern.onrender.com/showuser");
+      const res = await axios.get("http://localhost:5000/showuser");
 
       setUsers(res.data.data);
 
@@ -36,8 +35,7 @@ const Adminuser = () => {
 
     try {
 
-      // const res = await axios.delete(`http://localhost:5000/deleteuser/${id}`);
-      const res = await axios.delete(`https://yash-it-mern.onrender.com/deleteuser/${id}`);
+      const res = await axios.delete(`http://localhost:5000/deleteuser/${id}`);
 
       if (res.data.status) {
 
@@ -240,7 +238,7 @@ const Adminuser = () => {
                           <td>{user.password}</td>
                           <td>{user.mobile}</td>
                           <td>
-                            <img src={`https://yash-it-mern.onrender.com/uploads/${user.image}`} width="50" />
+                            <img src={`http://localhost:5000/uploads/${user.image}`} width="50" />
                           </td>
                           <td>{user.address}</td>
 

@@ -43,8 +43,10 @@ const AddHomeSetting = () => {
         formData.append("homeBarImage", banner);  // backend name
 
         try {
-            // const res = await axios.post("http://localhost:5000/addhomesetting",formData);
-            const res = await axios.post("https://yash-it-mern.onrender.com/addhomesetting",formData);
+            const res = await axios.post(
+                "http://localhost:5000/addhomesetting",
+                formData
+            );
 
             if (res.data.status) {
                 alert("Setting Saved Successfully ✅");

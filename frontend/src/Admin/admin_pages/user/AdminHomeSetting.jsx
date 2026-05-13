@@ -14,8 +14,7 @@ const AdminHomeSetting = () => {
 
         try {
 
-            // const res = await axios.get("http://localhost:5000/showhomesetting");
-            const res = await axios.get("https://yash-it-mern.onrender.com/showhomesetting");
+            const res = await axios.get("http://localhost:5000/showhomesetting");
 
             setSettings(res.data.data);
 
@@ -40,8 +39,7 @@ const AdminHomeSetting = () => {
 
         try {
 
-            // const res = await axios.delete(`http://localhost:5000/deletehomesetting/${id}`);
-            const res = await axios.delete(`https://yash-it-mern.onrender.com/deletehomesetting/${id}`);
+            const res = await axios.delete(`http://localhost:5000/deletehomesetting/${id}`);
 
             if (res.data.status) {
 
@@ -258,14 +256,14 @@ const AdminHomeSetting = () => {
 
                                                     <td>
                                                         <img
-                                                            src={`https://yash-it-mern.onrender.com/uploads/${setting.websiteLogo}`}
+                                                            src={`http://localhost:5000/uploads/${setting.websiteLogo}`}
                                                             width="50"
                                                             alt="logo"
                                                         />
                                                     </td>
 
                                                     <td>
-                                                        <img src={`https://yash-it-mern.onrender.com/uploads/${setting.homeBarImage}`}
+                                                        <img src={`http://localhost:5000/uploads/${setting.homeBarImage}`}
                                                             width="80"
                                                             alt="banner"                                              
                                                         />

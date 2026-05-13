@@ -27,8 +27,10 @@ const Contact = () => {
     e.preventDefault();
 
     try {
-      // const res = await axios.post("http://localhost:5000/addenquery",formData);
-      const res = await axios.post("https://yash-it-mern.onrender.com/addenquery",formData);
+      const res = await axios.post(
+        "http://localhost:5000/addenquery",
+        formData
+      );
 
       if (res.data?.status) {
         alert("Message Sent Successfully ✅");

@@ -32,8 +32,7 @@ const Home = () => {
                     <div className="hero-placeholder" />
                 ) : (
                     <img
-                        // src={`http://localhost:5000/uploads/${setting.homeBarImage}`}
-                        src={`https://yash-it-mern.onrender.com/uploads/${setting.homeBarImage}`}
+                        src={`http://localhost:5000/uploads/${setting.homeBarImage}`}
                         className="hero-image"
                         alt="banner"
                         onLoad={() => setLoaded(true)}

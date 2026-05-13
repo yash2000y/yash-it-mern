@@ -44,8 +44,10 @@ const AddAboutSetting = () => {
         formData.append("image", image);
 
         try {
-            // const res = await axios.post( "http://localhost:5000/addaboutsetting",formData);
-            const res = await axios.post( "https://yash-it-mern.onrender.com/addaboutsetting",formData);
+            const res = await axios.post(
+                "http://localhost:5000/addaboutsetting",
+                formData
+            );
 
             if (res.data.status) {
                 alert("About Saved Successfully ✅");
