@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-require("dotenv").config();
+require("dotenv").config(); 
 
 // Image upload,  Videos, PDF files ke liye multer package use karte hain
 
@@ -32,7 +32,10 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // static folder for images
-app.use("/uploads", express.static("uploads"));
+// app.use("/uploads", express.static("uploads"));
+const path = require("path");
+
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 
 // ---------------- MongoDB Connection ----------------
@@ -317,7 +320,7 @@ app.post("/addhomesetting",
 
 app.get("/showhomesetting", async (req, res) => {
 
-    const data = await Setting.find().sort({ _id: -1 }).limit(1);
+  const data = await Setting.find().sort({ _id: -1 }).limit(1);
   //  const data = await Setting.find();
 
   res.json({
@@ -453,7 +456,8 @@ app.post("/adminlogin", async (req, res) => {
 
     const token = jwt.sign(
       { id: admin._id },
-      "secretkey",
+      // "secretkey",
+      process.env.JWT_SECRET,
       { expiresIn: "1d" }
     );
 
