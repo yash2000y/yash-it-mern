@@ -33,7 +33,6 @@ const upload = multer({ storage: storage });
 
 // static folder for images
 // app.use("/uploads", express.static("uploads"));
-const path = require("path");
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
