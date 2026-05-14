@@ -317,18 +317,34 @@ app.post("/addhomesetting",
 
 // -------- Show HomeSetting API ---------
 
+// app.get("/showhomesetting", async (req, res) => {
+
+//   const data = await Setting.find().sort({ _id: -1 }).limit(1);
+//   //  const data = await Setting.find();
+
+//   res.json({
+//     status: true,
+//     data: data
+//   });
+
+// });
 app.get("/showhomesetting", async (req, res) => {
+  try {
+    const data = await Setting.find().sort({ _id: -1 }).limit(1);
 
-  const data = await Setting.find().sort({ _id: -1 }).limit(1);
-  //  const data = await Setting.find();
+    return res.json({
+      status: true,
+      data: data
+    });
 
-  res.json({
-    status: true,
-    data: data
-  });
-
+  } catch (error) {
+    return res.json({
+      status: false,
+      data: [],
+      message: error.message
+    });
+  }
 });
-
 // -------- DELETE HOME SETTING ---------
 
 app.delete("/deletehomesetting/:id", async (req, res) => {

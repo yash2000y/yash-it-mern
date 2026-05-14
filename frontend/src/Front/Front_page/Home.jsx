@@ -2,42 +2,82 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 // const BASE_URL = "https://yash-it-mern-production.up.railway.app";
-const BASE_URL = process.env.REACT_APP_API_URL;
+// const BASE_URL = process.env.REACT_APP_API_URL;
+const BASE_URL =
+    process.env.REACT_APP_API_URL ||
+    "https://yash-it-mern-production.up.railway.app";
 
 const Home = () => {
-
     const [setting, setSetting] = useState(null);
-    const [loaded, setLoaded] = useState(false);
+    const [loading, setLoading] = useState(true);
+
+    // FETCH DATA
+    const getSetting = async () => {
+        try {
+            const res = await axios.get(`${BASE_URL}/showhomesetting`);
+
+            const data = res.data?.data;
+
+            if (Array.isArray(data) && data.length > 0) {
+                setSetting(data[0]);
+            } else {
+                setSetting(null);
+            }
+        } catch (error) {
+            console.log("API ERROR:", error);
+            setSetting(null);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     useEffect(() => {
         getSetting();
     }, []);
+
+    // DEBUG LOG
     useEffect(() => {
-        if (setting) {
-            console.log("FULL SETTING:", setting);
-            console.log("IMAGE URL:", `${BASE_URL}/uploads/${setting.homeBarImage}`);
+        if (setting?.homeBarImage) {
+            console.log(
+                "IMAGE URL:",
+                `${BASE_URL}/uploads/${setting.homeBarImage}`
+            );
         }
     }, [setting]);
-    const getSetting = async () => {
-        try {
-            // const res = await axios.get("http://localhost:5000/showhomesetting");
-            const res = await axios.get(`${BASE_URL}/showhomesetting`);
-
-            setSetting(res.data.data[0]);
 
 
+    // const [setting, setSetting] = useState(null);
+    // const [loaded, setLoaded] = useState(false);
 
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    // useEffect(() => {
+    //     getSetting();
+    // }, []);
+    // useEffect(() => {
+    //     if (setting) {
+    //         console.log("FULL SETTING:", setting);
+    //         console.log("IMAGE URL:", `${BASE_URL}/uploads/${setting.homeBarImage}`);
+    //     }
+    // }, [setting]);
+    // const getSetting = async () => {
+    //     try {
+    //         // const res = await axios.get("http://localhost:5000/showhomesetting");
+    //         const res = await axios.get(`${BASE_URL}/showhomesetting`);
+
+    //         setSetting(res.data.data[0]);
+
+
+
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // };
 
     return (
         <>
             <section className="container-fluid hero">
 
                 {/* Loader + Image Fix */}
-                {setting && setting.homeBarImage ? (
+                {setting?.homeBarImage ? (
                     <img
                         src={`${BASE_URL}/uploads/${setting.homeBarImage}`}
                         className="hero-image"
