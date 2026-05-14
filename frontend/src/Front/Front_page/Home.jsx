@@ -16,9 +16,11 @@ const Home = () => {
         try {
             // const res = await axios.get("http://localhost:5000/showhomesetting");
             const res = await axios.get(`${BASE_URL}/showhomesetting`);
-
+            console.log("FULL API RESPONSE:", res.data); // 👈 add this
 
             setSetting(res.data.data[0]);
+
+            console.log("IMAGE NAME:", res.data.data[0]?.homeBarImage);  // 👈 add this
 
         } catch (error) {
             console.log(error);
@@ -30,15 +32,15 @@ const Home = () => {
             <section className="container-fluid hero">
 
                 {/* Loader + Image Fix */}
-                {!setting ? (
-                    <div className="hero-placeholder" />
-                ) : (
+                {setting?.homeBarImage ? (
                     <img
                         src={`${BASE_URL}/uploads/${setting.homeBarImage}`}
-                        className="hero-image loaded"
-                        onLoad={(e) => e.target.classList.add("show")}
+                        className="hero-image"
+                        alt="banner"
                     />
-                    // <img
+                ) : (
+                    <div className="hero-placeholder"></div>
+                    // 1 <img
                     //     // src={`http://localhost:5000/uploads/${setting.homeBarImage}`}
                     //     src={`${BASE_URL}/uploads/${setting.homeBarImage}`}
                     //     className="hero-image"
