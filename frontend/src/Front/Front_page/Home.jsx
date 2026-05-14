@@ -11,16 +11,20 @@ const Home = () => {
     useEffect(() => {
         getSetting();
     }, []);
-
+    useEffect(() => {
+        if (setting) {
+            console.log("FULL SETTING:", setting);
+            console.log("IMAGE URL:", `${BASE_URL}/uploads/${setting.homeBarImage}`);
+        }
+    }, [setting]);
     const getSetting = async () => {
         try {
             // const res = await axios.get("http://localhost:5000/showhomesetting");
             const res = await axios.get(`${BASE_URL}/showhomesetting`);
-            console.log("FULL API RESPONSE:", res.data); // 👈 add this
 
             setSetting(res.data.data[0]);
 
-            console.log("IMAGE NAME:", res.data.data[0]?.homeBarImage);  // 👈 add this
+
 
         } catch (error) {
             console.log(error);
@@ -32,7 +36,7 @@ const Home = () => {
             <section className="container-fluid hero">
 
                 {/* Loader + Image Fix */}
-                {setting?.homeBarImage ? (
+                {setting && setting.homeBarImage ? (
                     <img
                         src={`${BASE_URL}/uploads/${setting.homeBarImage}`}
                         className="hero-image"
