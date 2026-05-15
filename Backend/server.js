@@ -16,7 +16,9 @@ const bcrypt = require("bcryptjs");
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: "*"
+}));
 app.get("/", (req, res) => {
   res.send("API Running Successfully");
 });
@@ -41,7 +43,9 @@ app.use("/uploads", express.static("uploads"));
 // ---------------- MongoDB Connection ----------------
 
 // mongoose.connect("mongodb://127.0.0.1:27017/yashit")
-mongoose.connect(process.env.MONGO_URL)
+mongoose.connect(process.env.MONGO_URL, {
+  dbName: "yashit"
+})
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
 
