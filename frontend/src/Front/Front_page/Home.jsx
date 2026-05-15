@@ -13,7 +13,7 @@ const Home = () => {
 
     const getSetting = async () => {
         try {
-            const res = await axios.get("http://localhost:5000/showhomesetting");
+            const res = await axios.get("https://yash-it-mern.onrender.com/showhomesetting");
 
 
             setSetting(res.data.data[0]);
@@ -32,7 +32,7 @@ const Home = () => {
                     <div className="hero-placeholder" />
                 ) : (
                     <img
-                        src={`http://localhost:5000/uploads/${setting.homeBarImage}`}
+                        src={`https://yash-it-mern.onrender.com/uploads/${setting.homeBarImage}`}
                         className="hero-image"
                         alt="banner"
                         onLoad={() => setLoaded(true)}
@@ -113,7 +113,7 @@ export default Home;
 
 //     const getSetting = async () => {
 //         try {
-//             const res = await axios.get("http://localhost:5000/showhomesetting");
+//             const res = await axios.get("https://yash-it-mern.onrender.com/showhomesetting");
 
 
 //             setSetting(res.data.data[0]);
@@ -136,7 +136,7 @@ export default Home;
 //                         }}></div>
 //                     ) : (
 //                         <img
-//                             src={`http://localhost:5000/uploads/${setting.homeBarImage}`}
+//                             src={`https://yash-it-mern.onrender.com/uploads/${setting.homeBarImage}`}
 //                             className="img-fluid"
 //                             alt="banner"
 //                             onLoad={() => setLoaded(true)}

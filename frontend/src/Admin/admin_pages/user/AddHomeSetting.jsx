@@ -44,7 +44,7 @@ const AddHomeSetting = () => {
 
         try {
             const res = await axios.post(
-                "http://localhost:5000/addhomesetting",
+                "https://yash-it-mern.onrender.com/addhomesetting",
                 formData
             );
 

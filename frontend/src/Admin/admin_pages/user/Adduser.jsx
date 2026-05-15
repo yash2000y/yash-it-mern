@@ -51,7 +51,7 @@ function AddUser() {
         try {
 
             const res = await axios.post(
-                "http://localhost:5000/adduser",
+                "https://yash-it-mern.onrender.com/adduser",
                 formData
             );
 

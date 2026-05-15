@@ -28,7 +28,7 @@ const Contact = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/addenquery",
+        "https://yash-it-mern.onrender.com/addenquery",
         formData
       );
 

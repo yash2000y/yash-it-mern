@@ -12,7 +12,7 @@ const About = () => {
 
     const getAbout = async () => {
         try {
-            const res = await axios.get("http://localhost:5000/showaboutsettings");
+            const res = await axios.get("https://yash-it-mern.onrender.com/showaboutsettings");
 
             // latest record
             setAbout(res.data.data[0]);
@@ -43,7 +43,7 @@ const About = () => {
                                 <div className="about-image-placeholder"></div>
                             ) : (
                                 <img
-                                    src={`http://localhost:5000/uploads/${about.image}`}
+                                    src={`https://yash-it-mern.onrender.com/uploads/${about.image}`}
                                     className="img-fluid profile-img"
                                     onLoad={() => setLoaded(true)}
                                     alt="Profile Image"
@@ -358,7 +358,7 @@ export default About;
 
 //     const getAbout = async () => {
 //         try {
-//             const res = await axios.get("http://localhost:5000/showaboutsettings");
+//             const res = await axios.get("https://yash-it-mern.onrender.com/showaboutsettings");
 
 //             // latest record
 //             setAbout(res.data.data[0]);
@@ -392,7 +392,7 @@ export default About;
 //                                 }}></div>
 //                             ) : (
 //                                 <img
-//                                     src={`http://localhost:5000/uploads/${about.image}`}
+//                                     src={`https://yash-it-mern.onrender.com/uploads/${about.image}`}
 //                                     className="img-fluid profile-img"
 //                                     style={{ height: 400 }}
 //                                     style={{

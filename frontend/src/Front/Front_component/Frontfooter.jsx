@@ -32,7 +32,7 @@ const Frontfooter = () => {
 
                                 <li className="icon1">
                                     <a
-                                        href="https://www.youtube.com/@thekkgroups_in"
+                                        href="#"
                                         className="btn-floating btn-sm text-black"
                                     >
                                         <i className="bi bi-instagram" />

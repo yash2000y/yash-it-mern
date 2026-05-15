@@ -13,7 +13,7 @@ const Adminenquery = () => {
     const getUsers = async () => {
         try {
 
-            const res = await axios.get("http://localhost:5000/showenquiry");
+            const res = await axios.get("https://yash-it-mern.onrender.com/showenquiry");
 
             if (res.data.status) {
                 setUsers(res.data.data);
@@ -33,7 +33,7 @@ const Adminenquery = () => {
 
         try {
 
-            await axios.delete(`http://localhost:5000/deleteenquiry/${id}`);
+            await axios.delete(`https://yash-it-mern.onrender.com/deleteenquiry/${id}`);
 
             alert("User Deleted");
 

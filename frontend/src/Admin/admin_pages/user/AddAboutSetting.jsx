@@ -45,7 +45,7 @@ const AddAboutSetting = () => {
 
         try {
             const res = await axios.post(
-                "http://localhost:5000/addaboutsetting",
+                "https://yash-it-mern.onrender.com/addaboutsetting",
                 formData
             );
 
