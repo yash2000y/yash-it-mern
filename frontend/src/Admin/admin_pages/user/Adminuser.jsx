@@ -4,7 +4,6 @@ import axios from "axios";
 
 import logosmall from "../../admin_assets/img/logo-small.png";
 import avatar01jpg from "../../admin_assets/img/profiles/avatar-01.jpg";
-const BASE_URL = "https://yash-it-mern-production.up.railway.app";
 
 const Adminuser = () => {
 
@@ -14,8 +13,7 @@ const Adminuser = () => {
   const getUsers = async () => {
     try {
 
-      // const res = await axios.get("http://localhost:5000/showuser");
-      const res = await axios.get(`${BASE_URL}/showuser`);
+      const res = await axios.get("http://localhost:5000/showuser");
 
       setUsers(res.data.data);
 
@@ -37,8 +35,7 @@ const Adminuser = () => {
 
     try {
 
-      // const res = await axios.delete(`http://localhost:5000/deleteuser/${id}`);
-      const res = await axios.delete(`${BASE_URL}/deleteuser/${id}`);
+      const res = await axios.delete(`http://localhost:5000/deleteuser/${id}`);
 
       if (res.data.status) {
 
@@ -241,8 +238,7 @@ const Adminuser = () => {
                           <td>{user.password}</td>
                           <td>{user.mobile}</td>
                           <td>
-                            {/* <img src={`http://localhost:5000/uploads/${user.image}`} width="50" /> */}
-                            <img src={`${BASE_URL}/uploads/${user.image}`} width="50" />
+                            <img src={`http://localhost:5000/uploads/${user.image}`} width="50" />
                           </td>
                           <td>{user.address}</td>
 

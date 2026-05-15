@@ -1,116 +1,61 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-// const BASE_URL = "https://yash-it-mern-production.up.railway.app";
-// const BASE_URL = process.env.REACT_APP_API_URL;
-const BASE_URL =
-    process.env.REACT_APP_API_URL ||
-    "https://yash-it-mern-production.up.railway.app";
 
 const Home = () => {
+
     const [setting, setSetting] = useState(null);
-    const [loading, setLoading] = useState(true);
-
-    // FETCH DATA
-    const getSetting = async () => {
-        try {
-            const res = await axios.get(`${BASE_URL}/showhomesetting`);
-
-            const data = res.data?.data;
-
-            if (Array.isArray(data) && data.length > 0) {
-                setSetting(data[0]);
-            } else {
-                setSetting(null);
-            }
-        } catch (error) {
-            console.log("API ERROR:", error);
-            setSetting(null);
-        } finally {
-            setLoading(false);
-        }
-    };
+    const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
         getSetting();
     }, []);
 
-    // DEBUG LOG
-    useEffect(() => {
-        if (setting?.homeBarImage) {
-            console.log(
-                "IMAGE URL:",
-                `${BASE_URL}/uploads/${setting.homeBarImage}`
-            );
+    const getSetting = async () => {
+        try {
+            const res = await axios.get("http://localhost:5000/showhomesetting");
+
+
+            setSetting(res.data.data[0]);
+
+        } catch (error) {
+            console.log(error);
         }
-    }, [setting]);
-
-
-    // const [setting, setSetting] = useState(null);
-    // const [loaded, setLoaded] = useState(false);
-
-    // useEffect(() => {
-    //     getSetting();
-    // }, []);
-    // useEffect(() => {
-    //     if (setting) {
-    //         console.log("FULL SETTING:", setting);
-    //         console.log("IMAGE URL:", `${BASE_URL}/uploads/${setting.homeBarImage}`);
-    //     }
-    // }, [setting]);
-    // const getSetting = async () => {
-    //     try {
-    //         // const res = await axios.get("http://localhost:5000/showhomesetting");
-    //         const res = await axios.get(`${BASE_URL}/showhomesetting`);
-
-    //         setSetting(res.data.data[0]);
-
-
-
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // };
+    };
 
     return (
         <>
             <section className="container-fluid hero">
 
                 {/* Loader + Image Fix */}
-                {setting?.homeBarImage ? (
+                {!setting ? (
+                    <div className="hero-placeholder" />
+                ) : (
                     <img
-                        src={`${BASE_URL}/uploads/${setting.homeBarImage}`}
+                        src={`http://localhost:5000/uploads/${setting.homeBarImage}`}
                         className="hero-image"
                         alt="banner"
+                        onLoad={() => setLoaded(true)}
+                        style={{
+                            opacity: loaded ? 1 : 0,
+                            transition: "opacity 0.5s ease"
+                        }}
                     />
-                ) : (
-                    <div className="hero-placeholder"></div>
-                    // 1 <img
-                    //     // src={`http://localhost:5000/uploads/${setting.homeBarImage}`}
-                    //     src={`${BASE_URL}/uploads/${setting.homeBarImage}`}
-                    //     className="hero-image"
-                    //     alt="banner"
-                    //     onLoad={() => setLoaded(true)}
-                    //     style={{
-                    //         opacity: loaded ? 1 : 0,
-                    //         transition: "opacity 0.5s ease"
-                    //     }}
-                    // />
                 )}
 
                 <div className="hero-content text-center">
                     <div className="kelly">
-                        <h1 className="kelly-1">Full Stack Web Developer</h1>
+                            <h1 className="kelly-1">Full Stack Web Developer</h1>
 
-                        <p className="hero-copy fw-medium">
-                            I am a Full Stack Web Developer with knowledge of modern web
-                            technologies such as HTML, CSS, JavaScript, React.js,
-                            Node.js, Express.js, and MongoDB.
-                        </p>
+                            <p className="hero-copy fw-medium">
+                                I am a Full Stack Web Developer with knowledge of modern web
+                                technologies such as HTML, CSS, JavaScript, React.js,
+                                Node.js, Express.js, and MongoDB.
+                            </p>
 
-                        <Link to="/about" className="btn btn button border border-white">
-                            ABOUT ME
-                        </Link>
+                            <Link to="/about" className="btn btn button border border-white">
+                                ABOUT ME
+                            </Link>
                     </div>
                 </div>
             </section>

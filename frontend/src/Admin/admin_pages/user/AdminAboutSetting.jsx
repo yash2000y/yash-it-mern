@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-const BASE_URL = "https://yash-it-mern-production.up.railway.app";
 
 const AdminAboutSetting = () => {
 
@@ -10,8 +9,7 @@ const AdminAboutSetting = () => {
     // GET DATA
     const getAbout = async () => {
         try {
-            //   const res = await axios.get("http://localhost:5000/showaboutsettings");
-            const res = await axios.get(`${BASE_URL}/showaboutsettings`);
+          const res = await axios.get("http://localhost:5000/showaboutsettings");
             setAbouts(res.data.data);
         } catch (error) {
             console.log(error);
@@ -29,8 +27,7 @@ const AdminAboutSetting = () => {
         if (!confirmDelete) return;
 
         try {
-            // const res = await axios.delete(`http://localhost:5000/deleteaboutsetting/${id}`);
-            const res = await axios.delete(`${BASE_URL}/deleteaboutsetting/${id}`);
+            const res = await axios.delete(`http://localhost:5000/deleteaboutsetting/${id}`);
             if (res.data.status) {
                 alert("Deleted Successfully");
                 getAbout();
@@ -87,8 +84,7 @@ const AdminAboutSetting = () => {
 
                                             <td>
                                                 <img
-                                                    // src={`http://localhost:5000/uploads/${item.image}`}
-                                               src={`${BASE_URL}/uploads/${item.image}`}
+                                                    src={`http://localhost:5000/uploads/${item.image}`}
                                                     width="50"
                                                     alt=""
                                                 />

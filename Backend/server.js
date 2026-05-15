@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-require("dotenv").config(); 
+require("dotenv").config();
 
 // Image upload,  Videos, PDF files ke liye multer package use karte hain
 
@@ -32,9 +32,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // static folder for images
-// app.use("/uploads", express.static("uploads"));
-
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use("/uploads", express.static("uploads"));
 
 
 // ---------------- MongoDB Connection ----------------
@@ -317,34 +315,18 @@ app.post("/addhomesetting",
 
 // -------- Show HomeSetting API ---------
 
-// app.get("/showhomesetting", async (req, res) => {
-
-//   const data = await Setting.find().sort({ _id: -1 }).limit(1);
-//   //  const data = await Setting.find();
-
-//   res.json({
-//     status: true,
-//     data: data
-//   });
-
-// });
 app.get("/showhomesetting", async (req, res) => {
-  try {
-    const data = await Setting.find().sort({ _id: -1 }).limit(1);
 
-    return res.json({
-      status: true,
-      data: data
-    });
+  const data = await Setting.find().sort({ _id: -1 }).limit(1);
+  //  const data = await Setting.find();
 
-  } catch (error) {
-    return res.json({
-      status: false,
-      data: [],
-      message: error.message
-    });
-  }
+  res.json({
+    status: true,
+    data: data
+  });
+
 });
+
 // -------- DELETE HOME SETTING ---------
 
 app.delete("/deletehomesetting/:id", async (req, res) => {
@@ -471,8 +453,7 @@ app.post("/adminlogin", async (req, res) => {
 
     const token = jwt.sign(
       { id: admin._id },
-      // "secretkey",
-      process.env.JWT_SECRET,
+      "secretkey",
       { expiresIn: "1d" }
     );
 
@@ -659,11 +640,11 @@ app.put("/updateaboutsetting/:id", upload.single("image"), async (req, res) => {
 });
 // ---------------- SERVER ----------------
 
-// app.listen(5000, () => {
-//   console.log("Server running on port 5000");
-// });
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server running on ${PORT}`);
 });
+// app.listen(5000, () => {
+//   console.log("Server running on port 5000");
+// });

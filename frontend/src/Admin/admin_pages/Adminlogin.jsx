@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import loginpng from "../admin_assets/img/login.png";
 import "../admin_assets/css/style.css";
-const BASE_URL = "https://yash-it-mern-production.up.railway.app";
 
 const Adminlogin = () => {
 
@@ -18,9 +17,7 @@ const Adminlogin = () => {
     e.preventDefault();
 
     try {
-      // const res = await axios.post("http://localhost:5000/adminlogin",
-      const res = await axios.post(`${BASE_URL}/adminlogin`,
-         {
+      const res = await axios.post("http://localhost:5000/adminlogin", {
         username,
         password
       });

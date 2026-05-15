@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
-const BASE_URL = "https://yash-it-mern-production.up.railway.app";
+
 const About = () => {
 
     const [about, setAbout] = useState(null);
@@ -12,8 +12,7 @@ const About = () => {
 
     const getAbout = async () => {
         try {
-            // const res = await axios.get("http://localhost:5000/showaboutsettings");
-            const res = await axios.get(`${BASE_URL}/showaboutsettings`);
+            const res = await axios.get("http://localhost:5000/showaboutsettings");
 
             // latest record
             setAbout(res.data.data[0]);
@@ -44,8 +43,7 @@ const About = () => {
                                 <div className="about-image-placeholder"></div>
                             ) : (
                                 <img
-                                    // src={`http://localhost:5000/uploads/${about.image}`}
-                                    src={`${BASE_URL}/uploads/${about.image}`}
+                                    src={`http://localhost:5000/uploads/${about.image}`}
                                     className="img-fluid profile-img"
                                     onLoad={() => setLoaded(true)}
                                     alt="Profile Image"

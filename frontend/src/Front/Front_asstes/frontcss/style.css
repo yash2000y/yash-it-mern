@@ -85,31 +85,29 @@
 
 /* Home-section */
 
-/* .hero {
+.hero {
   background: url('/default-banner.jpg') center/cover no-repeat;
   height: 810px;
-
-} */
+  
+}
 
 /* image-section */
-/* .hero img {
+.hero img {
   position: absolute;
   inset: 0;
   display: block;
   width: 100%;
   height: 810px;
   object-fit: cover;
-   z-index: -1; 
-  z-index: 0;
+  z-index: -1;
   transition: opacity 0.5s ease;
-  display: block;
-  🔥 removes white gap 
-} */
+  display: block;   /* 🔥 removes white gap */
+}
 
-/* .kelly {
+.kelly {
   margin-top: 311px;
   color: #ffffff;
-} */
+}
 
 .kelly-1 {
   font-size: 3.5rem;
@@ -147,49 +145,46 @@
   justify-content: center;
   overflow: hidden;
   padding: 120px 16px 80px;
+ 
 }
 
 .hero-image {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* z-index: -1; */
-  z-index: 0;
-  opacity: 1;
-  height: 500px;
-  /* transition: opacity 0.5s ease;
-  display: block; */
+  z-index: -1;
+  transition: opacity 0.5s ease;
+  display: block;
 }
 
-/* .hero-placeholder {
+.hero-placeholder {
   position: absolute;
   inset: 0;
   z-index: -1;
-} */
+}
 
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.28));
-  /* z-index: -1; */
-  z-index: 1;
+  z-index: -1;
 }
 
 .hero-content {
   position: relative;
-  z-index: 2;
+  z-index: 1;
   width: min(100%, 900px);
   margin: 0 auto;
   color: #ffffff;
-  text-align: center;
 }
 
-/* .kelly {
+.kelly {
   margin: 0;
-} */
+}
 
 .kelly-1 {
   font-size: clamp(2rem, 5vw, 3.75rem);
@@ -858,112 +853,3 @@ body {
     padding: 10px 18px;
   }
 }
-
-/* form {
-  background: #fff;
-  padding: 30px;
-  border-radius: 10px;
-}
-
-.form-control {
-  padding: 12px;
-} */
-
-/* contact page end */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* image-section */
-/* .hero img {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 810px;
-  object-fit: cover;
-  z-index: -1;
-  transition: opacity 0.5s ease;
-  display: block;   🔥 removes white gap */
-/* } */
-/* 
-.kelly {
-  margin-top: 311px;
-  color: #ffffff;
-}
-
-.kelly-1 {
-  font-size: 3.5rem;
-  color: #ffffff;
-} */
-
-/* .button {
-  background-color: #34B7A7;
-  color: #ffffff;
-  border-radius: 50px;
-  padding: 10px 25px; */
-/* width ki jagah padding use karo */
-/* display: inline-block;
-  text-align: center;
-} */
-
-/* Mobile responsive */
-/* 
-@media (max-width:768px) {
-
-  .button {
-    padding: 8px 20px;
-    font-size: 14px;
-  }
-
-} */
-
-
-/* about section */
-
-
-/* .about {
-  margin-top: 0px;
-  background: linear-gradient(135deg, #AFC36D, #2F9E8F);
-}
-
-.about-page {
-  padding-top: 135px;
-}
-
-.profile-img {
-  padding-left: 100px;
-  padding-top: 20px;
-}
-
-.infomation {
-  margin-left: 200px;
-} */
-
-/* skills */
-
-
-/* .skill-name {
-  font-weight: 600;
-}
-
-.progress {
-  height: 6px;
-  margin-bottom: 25px;
-} */
-
-/* .progress-bar {
-  background-color: #20c997; */
-/* green color */
-/* } */

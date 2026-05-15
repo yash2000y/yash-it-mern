@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 import img from "../../admin_assets/img/logo-small.png";
 import img1 from "../../admin_assets/img/profiles/avatar-01.jpg";
-const BASE_URL = "https://yash-it-mern-production.up.railway.app";
 
 const AddAboutSetting = () => {
 
@@ -46,8 +45,9 @@ const AddAboutSetting = () => {
 
         try {
             const res = await axios.post(
-                // "http://localhost:5000/addaboutsetting",formData);
-                `${BASE_URL}/addaboutsetting`, formData);
+                "http://localhost:5000/addaboutsetting",
+                formData
+            );
 
             if (res.data.status) {
                 alert("About Saved Successfully ✅");
