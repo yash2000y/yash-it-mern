@@ -41,7 +41,7 @@ const Frontfooter = () => {
 
                                 <li className="icon1">
                                     <a
-                                        href="https://www.tumblr.com/kkgroups"
+                                        href="#"
                                         className="btn-floating btn-sm text-black"
                                     >
                                         <i className="bi bi-linkedin" />

@@ -14,7 +14,7 @@ const Adminheader = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:5000/logout");
+      await axios.post("https://yash-it-mern.onrender.com/logout");
 
       localStorage.removeItem("token"); //  main logout
 

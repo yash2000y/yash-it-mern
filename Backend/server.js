@@ -2,6 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
+const cloudinary = require("cloudinary").v2;
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+
 
 // Image upload,  Videos, PDF files ke liye multer package use karte hain
 
@@ -19,22 +22,41 @@ app.use(express.json());
 app.use(cors({
   origin: "*"
 }));
+// ================= CLOUDINARY CONFIG =================
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET,
+});
+
+// =====================================================
+
 app.get("/", (req, res) => {
   res.send("API Running Successfully");
 });
 
 // ---------------- IMAGE UPLOAD CONFIG ----------------
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "uploads/");
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, "uploads/");
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, Date.now() + path.extname(file.originalname));
+//   }
+// });
+
+// const upload = multer({ storage: storage });
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "yash-portfolio",
+    allowed_formats: ["jpg", "png", "jpeg", "webp"],
   },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + path.extname(file.originalname));
-  }
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({ storage });
 
 // static folder for images
 app.use("/uploads", express.static("uploads"));
@@ -286,10 +308,10 @@ app.post("/addhomesetting",
     try {
 
       const websiteLogo = req.files["websiteLogo"]
-        ? req.files["websiteLogo"][0].filename : "";
+        ? req.files["websiteLogo"][0].path : "";
 
       const homeBarImage = req.files["homeBarImage"]
-        ? req.files["homeBarImage"][0].filename : "";
+        ? req.files["homeBarImage"][0].path : "";
 
       const setting = new Setting({
 
@@ -378,14 +400,12 @@ app.put("/updatehomesettings/:id",
 
       // ✅ logo update
       if (req.files["websiteLogo"]) {
-        updateData.websiteLogo = req.files["websiteLogo"][0].filename;
+        updateData.websiteLogo = req.files["websiteLogo"][0].path;
       }
 
-      // ✅ banner update
       if (req.files["homeBarImage"]) {
-        updateData.homeBarImage = req.files["homeBarImage"][0].filename;
+        updateData.homeBarImage = req.files["homeBarImage"][0].path;
       }
-
       const result = await Setting.findByIdAndUpdate(
         req.params.id,
         updateData,
