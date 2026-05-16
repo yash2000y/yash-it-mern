@@ -297,30 +297,26 @@ app.delete("/deleteenquiry/:id", async (req, res) => {
 
 // -------- Add HomeSetting API ---------
 
-
-app.post("/addhomesetting",
+app.post(
+  "/addhomesetting",
   upload.fields([
     { name: "websiteLogo", maxCount: 1 },
     { name: "homeBarImage", maxCount: 1 }
   ]),
   async (req, res) => {
-
     try {
 
-      const websiteLogo = req.files["websiteLogo"]
-        ? req.files["websiteLogo"][0].path : "";
+      console.log(req.files); // DEBUG
 
-      const homeBarImage = req.files["homeBarImage"]
-        ? req.files["homeBarImage"][0].path : "";
+      const websiteLogo = req.files?.websiteLogo?.[0]?.path || "";
+      const homeBarImage = req.files?.homeBarImage?.[0]?.path || "";
 
       const setting = new Setting({
-
         websiteName: req.body.websiteName,
         email: req.body.email,
         address: req.body.address,
-        websiteLogo: websiteLogo,
-        homeBarImage: homeBarImage
-
+        websiteLogo,
+        homeBarImage
       });
 
       const result = await setting.save();
@@ -332,15 +328,14 @@ app.post("/addhomesetting",
       });
 
     } catch (error) {
-
-      res.json({
+      console.log(error); // IMPORTANT
+      res.status(500).json({
         status: false,
         message: error.message
       });
-
     }
-
-  });
+  }
+);
 
 // -------- Show HomeSetting API ---------
 
@@ -523,7 +518,7 @@ app.post("/addaboutsetting", upload.single("image"), async (req, res) => {
       website: req.body.website,
       city: req.body.city,
       freelance: req.body.freelance,
-      image: req.file ? req.file.filename : ""
+      image: req.file ? req.file.path : ""
 
     });
 
