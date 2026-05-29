@@ -43,7 +43,7 @@ const About = () => {
                                 <div className="about-image-placeholder"></div>
                             ) : (
                                 <img
-                                    src={`https://yash-it-mern.onrender.com/uploads/${about.image}`}
+                                    src={about.image}
                                     className="img-fluid profile-img"
                                     onLoad={() => setLoaded(true)}
                                     alt="Profile Image"

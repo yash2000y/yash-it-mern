@@ -9,7 +9,7 @@ const AdminAboutSetting = () => {
     // GET DATA
     const getAbout = async () => {
         try {
-          const res = await axios.get("https://yash-it-mern.onrender.com/showaboutsettings");
+            const res = await axios.get("https://yash-it-mern.onrender.com/showaboutsettings");
             setAbouts(res.data.data);
         } catch (error) {
             console.log(error);
@@ -84,7 +84,7 @@ const AdminAboutSetting = () => {
 
                                             <td>
                                                 <img
-                                                    src={`https://yash-it-mern.onrender.com/uploads/${item.image}`}
+                                                    src={item.image}
                                                     width="50"
                                                     alt=""
                                                 />
