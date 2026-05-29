@@ -256,17 +256,16 @@ const AdminHomeSetting = () => {
 
                                                     <td>
                                                         <img
-                                                            src={`https://yash-it-mern.onrender.com/uploads/${setting.websiteLogo}`}
+                                                            src={setting.websiteLogo}
                                                             width="50"
                                                             alt="logo"
                                                         />
                                                     </td>
 
                                                     <td>
-                                                        <img src={`https://yash-it-mern.onrender.com/uploads/${setting.homeBarImage}`}
-                                                            width="80"
-                                                            alt="banner"                                              
-                                                        />
+                                                        <img src={setting.homeBarImage}
+                                                         width="80" 
+                                                         alt="banner" />
                                                     </td>
 
                                                     <td>
