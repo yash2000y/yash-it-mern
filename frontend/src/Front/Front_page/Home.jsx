@@ -32,7 +32,7 @@ const Home = () => {
                     <div className="hero-placeholder" />
                 ) : (
                     <img
-                        src={`https://yash-it-mern.onrender.com/uploads/${setting.homeBarImage}`}
+                        src={setting.homeBarImage}
                         className="hero-image"
                         alt="banner"
                         onLoad={() => setLoaded(true)}
@@ -45,17 +45,17 @@ const Home = () => {
 
                 <div className="hero-content text-center">
                     <div className="kelly">
-                            <h1 className="kelly-1">Full Stack Web Developer</h1>
+                        <h1 className="kelly-1">Full Stack Web Developer</h1>
 
-                            <p className="hero-copy fw-medium">
-                                I am a Full Stack Web Developer with knowledge of modern web
-                                technologies such as HTML, CSS, JavaScript, React.js,
-                                Node.js, Express.js, and MongoDB.
-                            </p>
+                        <p className="hero-copy fw-medium">
+                            I am a Full Stack Web Developer with knowledge of modern web
+                            technologies such as HTML, CSS, JavaScript, React.js,
+                            Node.js, Express.js, and MongoDB.
+                        </p>
 
-                            <Link to="/about" className="btn btn button border border-white">
-                                ABOUT ME
-                            </Link>
+                        <Link to="/about" className="btn btn button border border-white">
+                            ABOUT ME
+                        </Link>
                     </div>
                 </div>
             </section>
