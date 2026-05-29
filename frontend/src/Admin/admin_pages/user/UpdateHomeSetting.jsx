@@ -29,8 +29,8 @@ const UpdateHomeSetting = () => {
                 setAddress(data.address);
 
                 // OLD IMAGE SHOW
-                setLogoPreview(data.websiteLogo);
-                setBannerPreview(data.homeBarImage);
+                setLogoPreview(`https://yash-it-mern.onrender.com/uploads/${data.websiteLogo}`);
+                setBannerPreview(`https://yash-it-mern.onrender.com/uploads/${data.homeBarImage}`);
             })
             .catch((err) => {
                 console.log(err);

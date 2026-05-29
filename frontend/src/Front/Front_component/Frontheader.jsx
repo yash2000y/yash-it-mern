@@ -1,20 +1,69 @@
 import React from 'react'
 import "../Front_asstes/frontcss/style.css"
 import { Link } from 'react-router-dom'
+import { Offcanvas } from 'bootstrap'
 import logo from "../Front_asstes/frontimage/logo.png"
-
+import logo9 from "../Front_asstes/frontimage/logo9.png"    
 const Frontheader = () => {
+   const closeOffcanvas = (path) => {
+    const offcanvasElement = document.getElementById('offcanvasNavbar');
+
+    const offcanvas =
+        bootstrap.Offcanvas.getInstance(offcanvasElement);
+
+    if (offcanvas) {
+        offcanvas.hide();
+    }
+
+    setTimeout(() => {
+        window.location.href = path;
+    }, 300);
+};
     return (
         <>
             <nav className="navbar navbar-expand-lg fixed-top ">
-                <div className="container-fluid">
+                <div className="container-fluid d-flex align-items-center justify-content-between">
                     <Link className="navbar-brand ms-1 d-flex align-items-center" to="/">
                         <img
-                            src={logo}
+                            src={logo9}
                             alt="Yash IT"
                             className="front-logo"
                         />
                     </Link>
+                    {/* Mobile Icons */}
+                    <div className="d-flex align-items-center d-lg-none mobile-icons">
+
+                        <a
+                            href="#"
+                            className="mx-2 text-dark fs-5"
+                        >
+                            <i className="bi bi-twitter-x"></i>
+                        </a>
+
+                        <a
+                            href="#"
+                            className="mx-2 text-dark fs-5"
+                        >
+                            <i className="bi bi-facebook"></i>
+                        </a>
+
+                        <a
+                            href="https://www.instagram.com/the_christmasboy?igsh=MTJ0ZnE0dHFvZjRkaA=="
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mx-2 text-dark fs-5"
+                        >
+                            <i className="bi bi-instagram"></i>
+                        </a>
+
+                        <a
+                            href="#"
+                            className="mx-2 text-dark fs-5"
+                        >
+                            <i className="bi bi-linkedin"></i>
+                        </a>
+
+                    </div>
                     <button
                         className="navbar-toggler"
                         type="button"
@@ -32,9 +81,11 @@ const Frontheader = () => {
                         aria-labelledby="offcanvasNavbarLabel"
                     >
                         <div className="offcanvas-header">
-                            <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
-                                Offcanvas
-                            </h5>
+                            <img
+                                src={logo9}
+                                alt="Yash IT"
+                                className="front-logo"
+                            />
                             <button
                                 type="button"
                                 className="btn-close"
@@ -45,12 +96,17 @@ const Frontheader = () => {
                         <div className="offcanvas-body ">
                             <ul className="navbar-nav justify-content-end fw-medium flex-grow-1 pe-3 ">
                                 <li className="nav-item mx-2">
-                                    <Link to="/" className="nav-link " aria-current="page"
+                                    <Link to="/"
+                                        className="nav-link border-0 bg-transparent "
+                                        aria-current="page"
+                                        onClick={() => closeOffcanvas('/')}
                                     >Home
                                     </Link>
                                 </li>
                                 <li className="nav-item mx-2">
-                                    <Link to="/about" className="nav-link "
+                                    <Link to="/about"
+                                        className="nav-link border-0 bg-transparent "
+                                        onClick={() => closeOffcanvas('/about')}
                                     >About
                                     </Link>
                                 </li>
@@ -62,7 +118,10 @@ const Frontheader = () => {
                                     </a>
                                 </li> */}
                                 <li className="nav-item mx-2">
-                                    <Link to="/service" className="nav-link " aria-current="page"
+                                    <Link to="/service"
+                                        className="nav-link border-0 bg-transparent"
+                                        aria-current="page"
+                                        onClick={() => closeOffcanvas('/service')}
                                     >Service
                                     </Link>
                                 </li>
@@ -105,12 +164,15 @@ const Frontheader = () => {
                                     </ul>
                                 </li> */}
                                 <li className="nav-item mx-2">
-                                    <Link to="/contact" className="nav-link " aria-current="page"
+                                    <Link to="/contact"
+                                        className="nav-link border-0 bg-transparent"
+                                        aria-current="page"
+                                        onClick={() => closeOffcanvas('/contact')}
                                     >Contact
                                     </Link>
                                 </li>
                             </ul>
-                            <ul className="navbar-nav justify-content-end flex-grow-1 pe-3  me-5">
+                            <ul className="navbar-nav justify-content-end flex-grow-1 pe-3 me-5 d-none d-lg-flex">
                                 <li className="nav-icon mx-lg-2 fs-4 ">
                                     <a className="nav-icon text-light-emphasis  " href="#">
                                         {" "}

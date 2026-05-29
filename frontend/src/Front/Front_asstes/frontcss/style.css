@@ -6,16 +6,14 @@
 
 .navbar {
   background: linear-gradient(135deg, #AFC36D, #2F9E8F);
-  height: 80px;
+  height: 90px;
 
 }
 
 .front-logo {
-  width: auto;
-  height: clamp(64px, 10vw, 120px);
-  max-width: 100%;
+  width: 200px;
+  height: 90px;
   object-fit: contain;
-  margin-top: 0;
   display: block;
 }
 
@@ -27,9 +25,6 @@
     padding-bottom: 0.25rem;
   }
 
-  .front-logo {
-    height: 64px;
-  }
 }
 
 .nav-link {
@@ -65,6 +60,58 @@
   }
 }
 
+.navbar-toggler {
+  padding: 4px 6px !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.navbar-toggler-icon {
+  width: 1.6em;
+  height: 1.6em;
+  filter: brightness(0);
+
+}
+
+
+
+@media (max-width: 991px) {
+
+  .container-fluid {
+    flex-wrap: nowrap !important;
+  }
+
+  .mobile-icons {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    white-space: nowrap;
+  }
+
+  .mobile-icons a {
+    margin: 0 4px !important;
+    font-size: 18px;
+  }
+
+  .navbar-toggler {
+    flex-shrink: 0;
+    margin-left: 6px;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .navbar-toggler:focus {
+    box-shadow: none !important;
+  }
+
+  .navbar-toggler-icon {
+    width: 1.6em;
+    height: 1.6em;
+    filter: brightness(0);
+  }
+  
+}
+
 @media (max-width: 1200px) {
   .hero {
     min-height: calc(100vh - 68px);
@@ -88,7 +135,7 @@
 .hero {
   background: url('/default-banner.jpg') center/cover no-repeat;
   height: 810px;
-  
+
 }
 
 /* image-section */
@@ -101,7 +148,8 @@
   object-fit: cover;
   z-index: -1;
   transition: opacity 0.5s ease;
-  display: block;   /* 🔥 removes white gap */
+  display: block;
+  /* 🔥 removes white gap */
 }
 
 .kelly {
@@ -145,7 +193,7 @@
   justify-content: center;
   overflow: hidden;
   padding: 120px 16px 80px;
- 
+
 }
 
 .hero-image {

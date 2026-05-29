@@ -9,7 +9,7 @@ const AdminSidebar = () => {
           <div id="sidebar-menu" className="sidebar-menu">
             <ul>
               <li>
-                <Link to="/admin/dashboard"><i class="fas fa-holly-berry"></i> <span>Dashboard</span></Link>
+                <Link to="/admin/dashboard"><i className="fas fa-holly-berry"></i> <span>Dashboard</span></Link>
               </li>
               <li>
                 <Link to="/admin/users"><i className="fas fa-holly-berry" /> <span>Users</span></Link>

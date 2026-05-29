@@ -1,10 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
+// ---------------- IMAGE UPLOAD CONFIG ----------------
+const upload = require("./uploads/upload")
 const cors = require("cors");
-require("dotenv").config();
-const cloudinary = require("cloudinary").v2;
-const { CloudinaryStorage } = require("multer-storage-cloudinary");
 
+require("dotenv").config();
 
 // Image upload,  Videos, PDF files ke liye multer package use karte hain
 
@@ -22,44 +22,12 @@ app.use(express.json());
 app.use(cors({
   origin: "*"
 }));
-// ================= CLOUDINARY CONFIG =================
-
-cloudinary.config({
-  cloud_name: process.env.CLOUD_NAME,
-  api_key: process.env.CLOUD_API_KEY,
-  api_secret: process.env.CLOUD_API_SECRET,
-});
-
-// =====================================================
-
 app.get("/", (req, res) => {
   res.send("API Running Successfully");
 });
 
 // ---------------- IMAGE UPLOAD CONFIG ----------------
 
-// const storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, "uploads/");
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, Date.now() + path.extname(file.originalname));
-//   }
-// });
-
-// const upload = multer({ storage: storage });
-const storage = new CloudinaryStorage({
-  cloudinary: cloudinary,
-  params: {
-    folder: "yash-portfolio",
-    allowed_formats: ["jpg", "png", "jpeg", "webp"],
-  },
-});
-
-const upload = multer({ storage });
-
-// static folder for images
-app.use("/uploads", express.static("uploads"));
 
 
 // ---------------- MongoDB Connection ----------------
@@ -92,7 +60,7 @@ app.post("/adduser", upload.single("image"), async (req, res) => {
       password: req.body.password,
       mobile: req.body.mobile,
       address: req.body.address,
-      image: req.file ? req.file.filename : ""
+      image: req.file ? req.file.path : ""
     });
 
     const result = await user.save();
@@ -156,7 +124,7 @@ app.put("/updateuser/:id", upload.single("image"), async (req, res) => {
 
     // agar new image upload hui ho
     if (req.file) {
-      updateData.image = req.file.filename;
+      updateData.image = req.file.path;
     }
 
     const user = await User.findByIdAndUpdate(
@@ -297,26 +265,30 @@ app.delete("/deleteenquiry/:id", async (req, res) => {
 
 // -------- Add HomeSetting API ---------
 
-app.post(
-  "/addhomesetting",
+
+app.post("/addhomesetting",
   upload.fields([
     { name: "websiteLogo", maxCount: 1 },
     { name: "homeBarImage", maxCount: 1 }
   ]),
   async (req, res) => {
+
     try {
 
-      console.log(req.files); // DEBUG
+      const websiteLogo = req.files["websiteLogo"]
+        ? req.files["websiteLogo"][0].filename : "";
 
-      const websiteLogo = req.files?.websiteLogo?.[0]?.path || "";
-      const homeBarImage = req.files?.homeBarImage?.[0]?.path || "";
+      const homeBarImage = req.files["homeBarImage"]
+        ? req.files["homeBarImage"][0].filename : "";
 
       const setting = new Setting({
+
         websiteName: req.body.websiteName,
         email: req.body.email,
         address: req.body.address,
-        websiteLogo,
-        homeBarImage
+        websiteLogo: websiteLogo,
+        homeBarImage: homeBarImage
+
       });
 
       const result = await setting.save();
@@ -328,14 +300,15 @@ app.post(
       });
 
     } catch (error) {
-      console.log(error); // IMPORTANT
-      res.status(500).json({
+
+      res.json({
         status: false,
         message: error.message
       });
+
     }
-  }
-);
+
+  });
 
 // -------- Show HomeSetting API ---------
 
@@ -395,12 +368,14 @@ app.put("/updatehomesettings/:id",
 
       // ✅ logo update
       if (req.files["websiteLogo"]) {
-        updateData.websiteLogo = req.files["websiteLogo"][0].path;
+        updateData.websiteLogo = req.files["websiteLogo"][0].filename;
       }
 
+      // ✅ banner update
       if (req.files["homeBarImage"]) {
-        updateData.homeBarImage = req.files["homeBarImage"][0].path;
+        updateData.homeBarImage = req.files["homeBarImage"][0].filename;
       }
+
       const result = await Setting.findByIdAndUpdate(
         req.params.id,
         updateData,
@@ -635,7 +610,7 @@ app.put("/updateaboutsetting/:id", upload.single("image"), async (req, res) => {
 
     // ✅ image update
     if (req.file) {
-      updateData.image = req.file.filename;
+      updateData.image = req.file.path;
     }
 
     const result = await AboutSetting.findByIdAndUpdate(
