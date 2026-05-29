@@ -6,6 +6,10 @@ const cors = require("cors");
 
 require("dotenv").config();
 
+console.log("CLOUD_NAME =", process.env.CLOUD_NAME);
+console.log("API_KEY =", process.env.API_KEY);
+console.log("API_SECRET =", process.env.API_SECRET);
+
 // Image upload,  Videos, PDF files ke liye multer package use karte hain
 
 
