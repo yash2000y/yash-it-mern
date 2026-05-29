@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 
-const upload = require("../uploads/upload");
+const upload = require("../middleware/upload");
 
 
 // CREATE USER WITH IMAGE
