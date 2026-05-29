@@ -1,15 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
 // ---------------- IMAGE UPLOAD CONFIG ----------------
-const upload = require("./uploads/upload")
+const upload = require("./middleware/upload")
 const cors = require("cors");
 
 require("dotenv").config();
 
 // Image upload,  Videos, PDF files ke liye multer package use karte hain
 
-const multer = require("multer");
-const path = require("path");
 
 // login logout ke liye
 
@@ -52,8 +50,10 @@ const AboutSetting = require("./models/AboutSetting");
 
 app.post("/adduser", upload.single("image"), async (req, res) => {
 
-  try {
 
+  try {
+    console.log(req.file);
+    console.log(req.body);
     const user = new User({
       name: req.body.name,
       email: req.body.email,
@@ -276,10 +276,10 @@ app.post("/addhomesetting",
     try {
 
       const websiteLogo = req.files["websiteLogo"]
-        ? req.files["websiteLogo"][0].filename : "";
+        ? req.files["websiteLogo"][0].path : "";
 
       const homeBarImage = req.files["homeBarImage"]
-        ? req.files["homeBarImage"][0].filename : "";
+        ? req.files["homeBarImage"][0].path : "";
 
       const setting = new Setting({
 
@@ -368,12 +368,12 @@ app.put("/updatehomesettings/:id",
 
       // ✅ logo update
       if (req.files["websiteLogo"]) {
-        updateData.websiteLogo = req.files["websiteLogo"][0].filename;
+        updateData.websiteLogo = req.files["websiteLogo"][0].path;
       }
 
       // ✅ banner update
       if (req.files["homeBarImage"]) {
-        updateData.homeBarImage = req.files["homeBarImage"][0].filename;
+        updateData.homeBarImage = req.files["homeBarImage"][0].path;
       }
 
       const result = await Setting.findByIdAndUpdate(
