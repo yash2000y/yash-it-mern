@@ -30,7 +30,7 @@ const Adminheader = ({ toggleSidebar }) => {
         <div className="header-left">
           <Link to="/admin/dashboard" className="logo">
             {/* <img src="assets/img/logo.png" alt="Logo" /> */}
-            <h1>Shiv</h1>
+            <h1>Yash IT</h1>
           </Link>
           <Link to="/admin/dashboard" className="logo logo-small">
             <img src={img} alt="Logo" width={30} height={30} />
