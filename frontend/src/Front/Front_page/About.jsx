@@ -117,7 +117,7 @@ const About = () => {
 
                             </div>
 
-                            <div className="about-note col-12">
+                            <div className="about-note col-12 border border-black align-items-center ">
                                 I am dedicated to developing high-quality web applications.
                             </div>
 
