@@ -59,7 +59,7 @@ const About = () => {
 
                             <h1>Full Stack Web Developer</h1>
 
-                            <p className="mt-4 about-description ">
+                            <p className="mt-4 about-description   ">
                                 I am a Full Stack Web Developer with skills in HTML, CSS, JavaScript, React.js, Node.js, Express.js, and MongoDB. I enjoy building responsive, user-friendly, and dynamic web applications. I am passionate about learning new technologies and improving my development skills to create modern and efficient websites.
                             </p>
 
@@ -117,7 +117,7 @@ const About = () => {
 
                             </div>
 
-                            <div className="about-note col-12 border border-black align-items-center ">
+                            <div className="about-note col-12 align-items-center ">
                                 I am dedicated to developing high-quality web applications.
                             </div>
 
