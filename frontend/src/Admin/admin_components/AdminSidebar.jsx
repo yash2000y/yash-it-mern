@@ -1,10 +1,30 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import "../admin_assets/css/style.css"
 
-const AdminSidebar = () => {
+
+const AdminSidebar = ({ sidebarOpen, toggleSidebar }) => {
+
+  
   return (
     <>
-      <div className="sidebar" id="sidebar">
+      {sidebarOpen && (
+        <div
+          className="sidebar-overlay"
+          onClick={toggleSidebar}
+        />
+      )}
+      <div className=
+        {`sidebar ${sidebarOpen ? "sidebar-show" : ""}`}
+        id="sidebar"
+        
+        >
+        <button
+          className="sidebar-close-btn"
+          onClick={toggleSidebar}
+        >
+          ✕
+        </button>
         <div className="sidebar-inner slimscroll">
           <div id="sidebar-menu" className="sidebar-menu">
             <ul>

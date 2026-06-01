@@ -3473,7 +3473,7 @@ footer p {
     box-shadow: 0 0 31px 3px rgba(44, 50, 63, .02)
 }
 
-.db-icon img{
+.db-icon img {
     font-size: 25px;
     width: 60px;
     height: 60px;
@@ -3490,7 +3490,7 @@ footer p {
     -ms-flex-pack: center
 }
 
-.bg-comman .db-icon  {
+.bg-comman .db-icon {
     background-color: #edf4ff;
     border-radius: 8px
 }
@@ -9897,7 +9897,7 @@ body[data-layout-mode=dark] .alertify .ajs-footer .ajs-buttons .ajs-button.ajs-o
 @media(min-width:992px) {
     #toggle_btn {
         align-items: center;
-        color: #fff;
+        color: #3d5ee1;
         display: inline-flex;
         float: left;
         font-size: 18px;
@@ -11204,3 +11204,33 @@ input, textarea {
 } */
 
 /* adduser-page end */
+@media (max-width: 991px) {
+
+    .sidebar {
+        margin-left: 0 !important;
+        transform: translateX(-260px);
+        left: 0 !important;
+    }
+
+    .sidebar.sidebar-show {
+        transform: translateX(0);
+    }
+}
+
+.sidebar-close-btn {
+    display: none;
+}
+
+@media (max-width: 991px) {
+    .sidebar-close-btn {
+        display: block;
+        position: absolute;
+        top: -5px;
+        right: 6px;
+        border: none;
+        background: transparent;
+        font-size: 22px;
+        cursor: pointer;
+        z-index: 10000;
+    }
+}

@@ -238,7 +238,7 @@ const Adminuser = () => {
                           <td>{user.password}</td>
                           <td>{user.mobile}</td>
                           <td>
-                            <img src={`https://yash-it-mern.onrender.com/uploads/${user.image}`} width="50" />
+                            <img src={user.image} width="50" alt="" />
                           </td>
                           <td>{user.address}</td>
 

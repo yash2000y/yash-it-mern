@@ -1,5 +1,5 @@
 import React from 'react'
-
+import "../admin_assets/css/style.css"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import img from "../admin_assets/img/logo-small.png"
 import img1 from "../admin_assets/img/profiles/avatar-01.jpg"
 
-const Adminheader = () => {
+const Adminheader = ({ toggleSidebar }) => {
   const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
@@ -37,9 +37,17 @@ const Adminheader = () => {
           </Link>
         </div>
         <div className="menu-toggle">
-          <a href="javascript:void(0);" id="toggle_btn">
+          <button
+            type="button"
+            id="toggle_btn"
+            onClick={toggleSidebar}
+            style={{
+              border: "none",
+              background: "transparent"
+            }}
+          >
             <i className="fas fa-bars" />
-          </a>
+          </button>
         </div>
         <div className="top-nav-search">
           <form>
@@ -50,9 +58,17 @@ const Adminheader = () => {
           </form>
         </div>
 
-        <a className="mobile_btn" id="mobile_btn">
+        <button
+          type="button"
+          className="mobile_btn"
+          onClick={toggleSidebar}
+          style={{
+            border: "none",
+            background: "transparent"
+          }}
+        >
           <i className="fas fa-bars" />
-        </a>
+        </button>
         <ul className="nav user-menu">
           <li className="nav-item dropdown has-arrow new-user-menus">
             <a

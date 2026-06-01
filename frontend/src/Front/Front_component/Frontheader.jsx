@@ -3,22 +3,22 @@ import "../Front_asstes/frontcss/style.css"
 import { Link } from 'react-router-dom'
 import { Offcanvas } from 'bootstrap'
 import logo from "../Front_asstes/frontimage/logo.png"
-import logo9 from "../Front_asstes/frontimage/logo9.png"    
+import logo9 from "../Front_asstes/frontimage/logo9.png"
+
 const Frontheader = () => {
-   const closeOffcanvas = (path) => {
-    const offcanvasElement = document.getElementById('offcanvasNavbar');
+    const closeOffcanvas = (path) => {
+        const offcanvasElement = document.getElementById('offcanvasNavbar');
 
-    const offcanvas =
-        bootstrap.Offcanvas.getInstance(offcanvasElement);
+        const offcanvas =
+            Offcanvas.getInstance(offcanvasElement);
+        if (offcanvas) {
+            offcanvas.hide();
+        }
 
-    if (offcanvas) {
-        offcanvas.hide();
-    }
-
-    setTimeout(() => {
-        window.location.href = path;
-    }, 300);
-};
+        setTimeout(() => {
+            window.location.href = path;
+        }, 300);
+    };
     return (
         <>
             <nav className="navbar navbar-expand-lg fixed-top ">
