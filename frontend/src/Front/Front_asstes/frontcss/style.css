@@ -490,8 +490,17 @@
 .about-skills {
   padding-top: 20px;
   padding-bottom: 50px;
+
+
 }
 
+
+@media (max-width: 767.98px) {
+  .about-skills {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}
 
 .skill-name {
   font-weight: 600;
@@ -517,8 +526,15 @@
     text-align: center;
   }
 
+  .about-description {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
   .about-details {
     text-align: left;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
   }
 
   .profile-img,
