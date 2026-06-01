@@ -2,7 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+import AdminHeader from "../../admin_components/Adminheader";
+import AdminSidebar from "../../admin_components/AdminSidebar";
 const AdminAboutSetting = () => {
+
+
+    const [sidebarOpen, setSidebarOpen] = useState(false);
+    const toggleSidebar = () => {
+        setSidebarOpen(!sidebarOpen);
+    };
 
     const [abouts, setAbouts] = useState([]);
 
@@ -39,6 +47,16 @@ const AdminAboutSetting = () => {
 
     return (
         <div className="page-wrapper">
+
+            {/* header */}
+            <AdminHeader
+                toggleSidebar={toggleSidebar}
+            />
+            {/* sidebar */}
+            <AdminSidebar
+                sidebarOpen={sidebarOpen}
+                toggleSidebar={toggleSidebar}
+            />
             <div className="content container-fluid">
 
                 <div className="page-header">

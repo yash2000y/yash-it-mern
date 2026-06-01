@@ -8,12 +8,6 @@ const AdminSidebar = ({ sidebarOpen, toggleSidebar }) => {
   
   return (
     <>
-      {sidebarOpen && (
-        <div
-          className="sidebar-overlay"
-          onClick={toggleSidebar}
-        />
-      )}
       <div className=
         {`sidebar ${sidebarOpen ? "sidebar-show" : ""}`}
         id="sidebar"

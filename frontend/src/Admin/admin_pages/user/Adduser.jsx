@@ -6,6 +6,13 @@ import AdminSidebar from "../../admin_components/AdminSidebar";
 
 function AddUser() {
 
+    const [sidebarOpen, setSidebarOpen] = useState(false);
+
+    const toggleSidebar = () => {
+        setSidebarOpen(!sidebarOpen);
+    };
+
+
     const navigate = useNavigate();
 
     const [user, setUser] = useState({
@@ -70,8 +77,11 @@ function AddUser() {
 
     return (
         <>
-            <AdminHeader />
-            <AdminSidebar />
+            {/* header */}
+            <AdminHeader toggleSidebar={toggleSidebar} />
+            {/* sidebar */}
+            <AdminSidebar sidebarOpen={sidebarOpen}
+                toggleSidebar={toggleSidebar} />
 
             <div className="page-wrapper">
 
