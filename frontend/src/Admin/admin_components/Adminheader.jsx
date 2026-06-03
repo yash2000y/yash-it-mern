@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from "react";
 import "../admin_assets/css/style.css"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,9 @@ import img from "../admin_assets/img/logo-small.png"
 import img1 from "../admin_assets/img/profiles/avatar-01.jpg"
 
 const Adminheader = ({ toggleSidebar }) => {
+
+  const [showDropdown, setShowDropdown] = useState(false);
+
   const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
@@ -17,6 +20,8 @@ const Adminheader = ({ toggleSidebar }) => {
       await axios.post("https://yash-it-mern.onrender.com/logout");
 
       localStorage.removeItem("token"); //  main logout
+
+      setShowDropdown(false);
 
       navigate("/adminlogin"); // redirect navigation
 
@@ -74,7 +79,10 @@ const Adminheader = ({ toggleSidebar }) => {
             <a
               href="#"
               className="dropdown-toggle nav-link"
-              data-bs-toggle="dropdown"
+              onClick={(e) => {
+                e.preventDefault();
+                setShowDropdown(!showDropdown);
+              }}
             >
               <span className="user-img">
                 <img
@@ -89,7 +97,7 @@ const Adminheader = ({ toggleSidebar }) => {
                 </div>
               </span>
             </a>
-            <div className="dropdown-menu">
+            <div className={`dropdown-menu ${showDropdown ? "show" : ""}`}>
               <div className="user-header">
                 <div className="avatar avatar-sm">
                   <img
