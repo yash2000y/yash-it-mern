@@ -11210,6 +11210,12 @@ input, textarea {
 } */
 
 /* adduser-page end */
+
+/* =========================
+   Mobile Sidebar Fix
+   Sidebar hidden by default
+========================= */
+
 @media (max-width: 991px) {
 
     .sidebar {
@@ -11223,11 +11229,18 @@ input, textarea {
     }
 }
 
+
+/* =========================
+   Sidebar Close Button
+   Hidden on desktop
+========================= */
+
 .sidebar-close-btn {
     display: none;
 }
 
 @media (max-width: 991px) {
+      /* Show close button only on mobile */
     .sidebar-close-btn {
         display: block;
         position: absolute;
@@ -11241,11 +11254,22 @@ input, textarea {
     }
 }
 
+/* =========================
+   Dropdown Arrow Fix
+   Force arrow visibility
+========================= */
+
 .header .has-arrow .dropdown-toggle:after {
     display: inline-block !important;
     visibility: visible !important;
     opacity: 1 !important;
 }
+
+
+/* =========================
+   Mobile Page Spacing
+   Left & Right Gap   Dashboard page only
+========================= */
 
 @media (max-width: 767px) {
 
