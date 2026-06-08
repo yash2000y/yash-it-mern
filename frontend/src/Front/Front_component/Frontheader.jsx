@@ -6,19 +6,18 @@ import logo from "../Front_asstes/frontimage/logo.png"
 import logo9 from "../Front_asstes/frontimage/logo9.png"
 
 const Frontheader = () => {
-    const closeOffcanvas = (path) => {
-        const offcanvasElement = document.getElementById('offcanvasNavbar');
+    const closeOffcanvas = () => {
+        const offcanvasElement =
+            document.getElementById("offcanvasNavbar");
 
         const offcanvas =
             Offcanvas.getInstance(offcanvasElement);
+
         if (offcanvas) {
             offcanvas.hide();
         }
-
-        setTimeout(() => {
-            window.location.href = path;
-        }, 300);
     };
+
     return (
         <>
             <nav className="navbar navbar-expand-lg fixed-top ">
@@ -106,7 +105,7 @@ const Frontheader = () => {
                                 <li className="nav-item mx-2">
                                     <Link to="/about"
                                         className="nav-link border-0 bg-transparent "
-                                        onClick={() => closeOffcanvas('/about')}
+                                        onClick={closeOffcanvas}
                                     >About
                                     </Link>
                                 </li>
@@ -121,7 +120,7 @@ const Frontheader = () => {
                                     <Link to="/service"
                                         className="nav-link border-0 bg-transparent"
                                         aria-current="page"
-                                        onClick={() => closeOffcanvas('/service')}
+                                        onClick={closeOffcanvas}
                                     >Service
                                     </Link>
                                 </li>
@@ -167,7 +166,7 @@ const Frontheader = () => {
                                     <Link to="/contact"
                                         className="nav-link border-0 bg-transparent"
                                         aria-current="page"
-                                        onClick={() => closeOffcanvas('/contact')}
+                                        onClick={closeOffcanvas}
                                     >Contact
                                     </Link>
                                 </li>
