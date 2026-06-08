@@ -98,7 +98,7 @@ const Frontheader = () => {
                                     <Link to="/"
                                         className="nav-link border-0 bg-transparent "
                                         aria-current="page"
-                                        onClick={() => closeOffcanvas('/')}
+                                        onClick={ closeOffcanvas}
                                     >Home
                                     </Link>
                                 </li>
