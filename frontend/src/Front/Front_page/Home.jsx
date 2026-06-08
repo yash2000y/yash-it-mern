@@ -32,7 +32,10 @@ const Home = () => {
                     <div className="hero-placeholder" />
                 ) : (
                     <img
-                        src={setting.homeBarImage}
+                        src={setting.homeBarImage.replace(
+                            "/upload/",
+                            "/upload/f_auto,q_auto,w_1920/"
+                        )}
                         className="hero-image"
                         alt="banner"
                         onLoad={() => setLoaded(true)}
@@ -43,7 +46,7 @@ const Home = () => {
                     />
                 )}
 
-                <div className="hero-content text-center">
+                <div className=" hero-content text-center">
                     <div className="kelly">
                         <h1 className="kelly-1">Full Stack Web Developer</h1>
 
